@@ -8,16 +8,15 @@ export const Filter = () => {
 
   const inputChangeHandler = event => {
     const { value } = event.target;
-   dispatch(getValueFromChange(value))
+    dispatch(getValueFromChange(value));
   };
-  
+
   return (
     <div>
       <Label>
         Find contact by name
-        <Input onChange={inputChangeHandler}  type="text" name="filter" />
+        <Input onChange={inputChangeHandler} type="text" name="filter" />
       </Label>
     </div>
   );
 };
-

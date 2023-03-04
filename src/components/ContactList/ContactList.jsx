@@ -3,20 +3,12 @@ import { Contact } from 'components/Contact/Contact';
 import { Item } from './ContactList.styled';
 
 export const ContactList = ({ contacts }) => {
-
-
-  
   return (
     <ul>
       {contacts.map(({ name, id, number }) => {
         return (
           <Item key={id}>
-            <Contact
-              userName={name}
-              userId={id}
-              userNumber={number}
-             
-            />
+            <Contact userName={name} userId={id} userNumber={number} />
           </Item>
         );
       })}
@@ -25,7 +17,6 @@ export const ContactList = ({ contacts }) => {
 };
 
 ContactList.propTypes = {
- 
   contacts: PropTypes.arrayOf(
     PropTypes.exact({
       name: PropTypes.string.isRequired,
