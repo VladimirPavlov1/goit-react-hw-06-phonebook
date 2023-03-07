@@ -5,9 +5,13 @@ import {
   Label,
   ErrorText,
 } from './FormContacts.styled';
-import PropTypes from 'prop-types';
+
 import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addContacts } from 'redux/contactsSlice/contactsSlice';
+
+
 
 const FilterSchema = Yup.object().shape({
   name: Yup.string()
@@ -38,9 +42,14 @@ const initialValues = {
   number: '',
 };
 
-export const FormContacts = ({ onSubmit }) => {
-  const handleSubmit = ({ name, number }, { resetForm }) => {
-    onSubmit(name, number);
+export const FormContacts = () => {
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = (onSubmit, { resetForm }) => {
+   const {name,number} = onSubmit;
+
+    dispatch(addContacts({name, number}));
 
     resetForm();
   };
@@ -72,6 +81,3 @@ export const FormContacts = ({ onSubmit }) => {
   );
 };
 
-FormContacts.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
